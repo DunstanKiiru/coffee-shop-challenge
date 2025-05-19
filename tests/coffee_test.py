@@ -17,11 +17,10 @@ class TestCoffee(unittest.TestCase):
             Coffee(123)
         
         with self.assertRaises(ValueError):
-            Coffee("Ab")  # too short
+            Coffee("Ab")  
     
     def test_name_property(self):
         self.assertEqual(self.coffee.name, "Espresso")
-        # Name should be immutable
         self.assertFalse(hasattr(self.coffee.__class__, 'name.setter'))
     
     def test_orders(self):
@@ -47,7 +46,6 @@ class TestCoffee(unittest.TestCase):
         self.assertIn(self.customer1, self.coffee.customers())
         self.assertIn(self.customer2, self.coffee.customers())
         
-        # Test duplicate customer
         self.customer1.create_order(self.coffee, 3.0)
         self.assertEqual(len(self.coffee.customers()), 2)
     

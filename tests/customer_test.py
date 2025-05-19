@@ -64,19 +64,15 @@ class TestCustomer(unittest.TestCase):
         customer2 = Customer("Bob")
         coffee = Coffee("Espresso")
         
-        # No orders yet
         self.assertIsNone(Customer.most_aficionado(coffee))
         
-        # One customer orders
         customer1.create_order(coffee, 3.5)
         self.assertEqual(Customer.most_aficionado(coffee), customer1)
         
-        # Second customer orders more
         customer2.create_order(coffee, 4.0)
         customer2.create_order(coffee, 4.0)
         self.assertEqual(Customer.most_aficionado(coffee), customer2)
         
-        # First customer catches up and surpasses
         customer1.create_order(coffee, 5.0)
         customer1.create_order(coffee, 4.0)
         self.assertEqual(Customer.most_aficionado(coffee), customer1)
