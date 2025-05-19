@@ -12,6 +12,8 @@ class Order:
         self._customer = customer
         self._coffee = coffee
         self.price = price
+        
+        # Add this order to the coffee's orders
         coffee._orders.append(self)
     
     @property
